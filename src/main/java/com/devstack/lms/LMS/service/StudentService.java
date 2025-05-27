@@ -8,4 +8,5 @@ import java.util.List;
 public interface StudentService {
      void createStudent(RequestStudentDto dto);
      List<ResponseStudentDto> loadAllStudents();
+     ResponseStudentDto findById(String id);
 }

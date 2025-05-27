@@ -35,6 +35,13 @@ public class StudentServiceImpl implements StudentService {
         return studentRepo.findAll().stream().map(this::toResponseStudentDto).toList();
     }
 
+    @Override
+    public ResponseStudentDto findById(String id) {
+        Student selectedStudent =
+                studentRepo.findById(id).orElseThrow(()->new RuntimeException("Student not found"));
+        return toResponseStudentDto(selectedStudent);
+    }
+
     private ResponseStudentDto toResponseStudentDto(Student student) {
         if (student == null) {
             return null;

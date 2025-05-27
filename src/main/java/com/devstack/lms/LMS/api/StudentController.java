@@ -32,7 +32,21 @@ public class StudentController {
     public ResponseEntity<StandardResponseDto> loadAllStudents() {
 
         return new ResponseEntity<>(
-                new StandardResponseDto(200,"all students",studentService.loadAllStudents()),
+                new StandardResponseDto(200,"all students",
+                        studentService.loadAllStudents()),
+                HttpStatus.OK
+        );
+    }
+
+    // http://localhost:9090/api/v1/students/hjdsafewfkjhdshfkshdf -> String -> not recommended
+    @GetMapping("/{id}") // load -> get data
+    public ResponseEntity<StandardResponseDto> findById(
+            @PathVariable String id
+    ) {
+
+        return new ResponseEntity<>(
+                new StandardResponseDto(200,"Student Data",
+                        studentService.findById(id)),
                 HttpStatus.OK
         );
     }
