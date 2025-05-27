@@ -3,10 +3,7 @@ package com.devstack.lms.LMS.api;
 import com.devstack.lms.LMS.dto.request.RequestStudentDto;
 import com.devstack.lms.LMS.service.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 // http://localhost:9090/api/v1/students
 @RestController
@@ -19,6 +16,14 @@ public class StudentController {
 
     @PostMapping // create -> save
     public String createStudent(
+            @RequestBody RequestStudentDto requestStudentDto
+    ) {
+        studentService.createStudent(requestStudentDto);
+        return "Student created";
+    }
+
+    @GetMapping // load -> get data
+    public String loadAllStudents(
             @RequestBody RequestStudentDto requestStudentDto
     ) {
         studentService.createStudent(requestStudentDto);
