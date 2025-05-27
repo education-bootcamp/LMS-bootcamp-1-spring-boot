@@ -42,6 +42,13 @@ public class StudentServiceImpl implements StudentService {
         return toResponseStudentDto(selectedStudent);
     }
 
+    @Override
+    public void deleteById(String id) {
+        Student selectedStudent =
+                studentRepo.findById(id).orElseThrow(()->new RuntimeException("Student not found"));
+        studentRepo.delete(selectedStudent);
+    }
+
     private ResponseStudentDto toResponseStudentDto(Student student) {
         if (student == null) {
             return null;
