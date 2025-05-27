@@ -6,9 +6,8 @@ import com.devstack.lms.LMS.repo.StudentRepo;
 import com.devstack.lms.LMS.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepo studentRepo;
